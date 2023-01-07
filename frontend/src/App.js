@@ -1,10 +1,12 @@
 import logo from "./logo.svg";
+import Header from "./components/header";
 
 let sampleData = [1, 2, 3, 4, 5];
 
 function App() {
   return (
     <div className="App">
+      <Header/>
       {sampleData.map((item) => {
         console.log(item);
         return (
