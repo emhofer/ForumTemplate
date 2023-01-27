@@ -1,17 +1,20 @@
-import logo from "./logo.svg";
+import { useState } from "react";
+import './App.css';
 import Header from "./components/header";
 
 let sampleData = [1, 2, 3, 4, 5];
 
 function App() {
+  const [test, setTest] = useState(false);
+
   return (
     <div className="App">
-      <Header/>
+      <Header />
       {sampleData.map((item) => {
         console.log(item);
         return (
           <>
-            <div className="card">
+            <div className="card" onClick={() => setTest(!test)}>
               <h3>Card Title</h3>
               <p>Card Text</p>
               <p>x Points | x Comments</p>
@@ -20,6 +23,7 @@ function App() {
           </>
         );
       })}
+      {test ? <div className="modal"></div> : false}
     </div>
   );
 }
