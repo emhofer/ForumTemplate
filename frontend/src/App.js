@@ -9,7 +9,8 @@ import getData from "./scripts/getdata";
 function App() {
   const [test, setTest] = useState(false);
   const [data, setData] = useState({});
-  const [APIdata, setAPIData] = useState([]);
+  const [APIposts, setAPIposts] = useState([]);
+  const [APIcomments, setAPIcomments] = useState([]);
 
   useEffect(() => {
     var myHeaders = new Headers();
@@ -27,6 +28,12 @@ function App() {
       collection: "posts",
     });
 
+     var rawComments = JSON.stringify({
+       dataSource: "Cluster0",
+       database: "forum",
+       collection: "comments",
+     });
+
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
@@ -34,33 +41,51 @@ function App() {
       redirect: "follow",
     };
 
+    var requestOptionsComments = {
+      method: "POST",
+      headers: myHeaders,
+      body: rawComments,
+      redirect: "follow",
+    };
+
     fetch(
-      "https://justcors.com/tl_bfb4fa6/https://data.mongodb-api.com/app/data-gcxtx/endpoint/data/v1/action/find",
+      "https://justcors.com/tl_8f8a771/https://data.mongodb-api.com/app/data-gcxtx/endpoint/data/v1/action/find",
       requestOptions
     )
       .then((response) => response.json())
       .then((result) => {
-        setAPIData(result.documents);
+        setAPIposts(result.documents);
       })
       .catch((error) => console.log("error", error));
+
+      fetch(
+        "https://justcors.com/tl_8f8a771/https://data.mongodb-api.com/app/data-gcxtx/endpoint/data/v1/action/find",
+        requestOptionsComments
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          setAPIcomments(result.documents);
+        })
+        .catch((error) => console.log("error", error));
   }, []);
 
   return (
     <div className="App">
       <Header />
       <New />
-      {APIdata.map((item) => {
+      {APIposts.map((item) => {
         return (
           <Card
             key={item._id}
             data={item}
+            comments={APIcomments}
             test={test}
             setData={setData}
             setTest={setTest}
           />
         );
       })}
-      <Modal data={data} />
+      <Modal data={data} comments={APIcomments} />
     </div>
   );
 }

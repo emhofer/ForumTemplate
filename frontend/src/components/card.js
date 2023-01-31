@@ -1,6 +1,9 @@
 import React from "react";
 
-const Card = ({ data, test, setData, setTest }) => {
+const Card = ({ data, comments, test, setData, setTest }) => {
+  if (comments.length > 0) {
+    comments = comments.filter((item) => item.post == data._id);
+  }
   return (
     <>
       <div
@@ -10,13 +13,13 @@ const Card = ({ data, test, setData, setTest }) => {
           setTest(!test);
           const modal = document.querySelector("#myModal");
           modal.style.display = "block";
-          console.log("modal");
         }}
       >
         <h3>{data.title}</h3>
         <p>{data.text}</p>
         <p>
-          {data.points} Points | {data.comments} Comments
+          {data.points} {data.points != 1 ? "Points" : "Point"} |{" "}
+          {comments.length} {comments.length != 1 ? "Comments" : "Comment"}
         </p>
       </div>
     </>

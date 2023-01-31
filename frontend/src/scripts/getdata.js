@@ -1,4 +1,6 @@
 const getData = () => {
+  let resultData = {};
+
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Access-Control-Request-Headers", "*");
@@ -22,11 +24,13 @@ const getData = () => {
   };
 
   fetch(
-    "https://justcors.com/tl_bfb4fa6/https://data.mongodb-api.com/app/data-gcxtx/endpoint/data/v1/action/find",
+    "https://justcors.com/tl_8f8a771/https://data.mongodb-api.com/app/data-gcxtx/endpoint/data/v1/action/find",
     requestOptions
   )
     .then((response) => response.json())
-    .then((result) => {return result})
+    .then((result) => {
+      resultData = result;
+    })
     .catch((error) => console.log("error", error));
 };
 
