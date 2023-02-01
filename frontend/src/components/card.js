@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ data, comments, test, setData, setTest }) => {
+const Card = ({ data, comments, setData }) => {
   if (comments.length > 0) {
     comments = comments.filter((item) => item.post == data._id);
   }
@@ -10,7 +10,6 @@ const Card = ({ data, comments, test, setData, setTest }) => {
         className="card"
         onClick={() => {
           setData(data);
-          setTest(!test);
           const modal = document.querySelector("#myModal");
           modal.style.display = "block";
         }}

@@ -15,7 +15,7 @@ const Modal = ({ data, comments }) => {
         Close
       </button>
       <h3>{data.title}</h3>
-      <p>{data.text}</p>
+      <p>{data.content}</p>
       <button>Upvote</button>
       <form action="">
         <label htmlFor="comment">Add comment: </label>
