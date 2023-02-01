@@ -7,7 +7,7 @@ const New = ({getPosts}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { title, content, points: 0 };
+    const data = { title, content, points: 0, timestamp: new Date() };
     const response = await axios.post(
       `https://eu-central-1.aws.data.mongodb-api.com/app/forumtemplate-bkubi/endpoint/posts/add`,
       data
@@ -19,7 +19,7 @@ const New = ({getPosts}) => {
 
   return (
     <div>
-      <p>Submit new post</p>
+      <h2>Submit new post</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title: </label>
         <input

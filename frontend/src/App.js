@@ -10,6 +10,7 @@ function App() {
   const [data, setData] = useState({});
   const [APIposts, setAPIposts] = useState([]);
   const [APIcomments, setAPIcomments] = useState([]);
+  let sortedAPIposts = [];
 
   const getPosts = async () => {
     const response = await axios.get(
@@ -17,6 +18,7 @@ function App() {
     );
     const json = await response.data;
     setAPIposts(json);
+    console.log(json);
   };
 
   const getComments = async () => {
@@ -27,6 +29,16 @@ function App() {
     setAPIcomments(json);
   };
 
+  const compare = (a, b) => {
+    if (a.timestamp < b.timestamp) {
+      return 1;
+    }
+    if (a.timestamp > b.timestamp) {
+      return -1;
+    }
+    return 0;
+  };
+
   useEffect(() => {
     getPosts();
     getComments();
@@ -35,8 +47,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <New getPosts={getPosts}/>
-      {APIposts.map((item) => {
+      <New getPosts={getPosts} />
+      <h2>Posts</h2>
+      {APIposts.sort(compare).map((item) => {
         return (
           <Card
             key={item._id}
@@ -46,7 +59,7 @@ function App() {
           />
         );
       })}
-      <Modal data={data} comments={APIcomments} />
+      <Modal data={data} comments={APIcomments} getPosts={getPosts} />
     </div>
   );
 }

@@ -4,6 +4,7 @@ const Card = ({ data, comments, setData }) => {
   if (comments.length > 0) {
     comments = comments.filter((item) => item.post == data._id);
   }
+
   return (
     <>
       <div
