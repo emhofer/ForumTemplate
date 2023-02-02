@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const New = ({getPosts}) => {
+const New = ({ getPosts }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { title, content, points: 0, timestamp: new Date() };
+    const payload = { title, content, points: 0, timestamp: new Date() };
     const response = await axios.post(
       `https://eu-central-1.aws.data.mongodb-api.com/app/forumtemplate-bkubi/endpoint/posts/add`,
-      data
+      payload
     );
     const json = await response.data;
-    console.log(json);
     getPosts();
+    setTitle("");
+    setContent("");
   };
 
   return (

@@ -18,7 +18,6 @@ function App() {
     );
     const json = await response.data;
     setAPIposts(json);
-    console.log(json);
   };
 
   const getComments = async () => {
@@ -59,7 +58,7 @@ function App() {
           />
         );
       })}
-      <Modal data={data} comments={APIcomments} getPosts={getPosts} />
+      <Modal data={data} setData={setData} posts={APIposts} comments={APIcomments} getPosts={getPosts} getComments={getComments} compare={compare}/>
     </div>
   );
 }
