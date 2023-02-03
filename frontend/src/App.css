@@ -1,24 +1,33 @@
 .card {
-  background-color: aqua;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Sit on top */
-  left: 50%;
-  top: 0;
+  left: 25%;
+  top: 5%;
   width: 50%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
+  height: 80%;
   overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+  background-color: lightgrey;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+#comment {
+  width: 50%;
+}
+
+textarea,
+#title {
+  width: 25%;
+}
+
+.multiLine {
+  white-space: pre-wrap;
 }

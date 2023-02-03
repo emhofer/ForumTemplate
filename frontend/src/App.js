@@ -59,7 +59,15 @@ function App() {
           />
         );
       })}
-      <Modal data={data} setData={setData} posts={APIposts} comments={APIcomments} getPosts={getPosts} getComments={getComments} compare={compare}/>
+      <Modal
+        data={data}
+        setData={setData}
+        posts={APIposts}
+        comments={APIcomments}
+        getPosts={getPosts}
+        getComments={getComments}
+        compare={compare}
+      />
     </div>
   );
 }

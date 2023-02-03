@@ -12,7 +12,6 @@ const New = ({ getPosts }) => {
       `https://eu-central-1.aws.data.mongodb-api.com/app/forumtemplate-bkubi/endpoint/posts/add`,
       payload
     );
-    const json = await response.data;
     getPosts();
     setTitle("");
     setContent("");
@@ -22,7 +21,7 @@ const New = ({ getPosts }) => {
     <div>
       <h2>Submit new post</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title: </label>
+        <label htmlFor="title">Title: </label><br />
         <input
           type="text"
           name="title"
@@ -31,10 +30,12 @@ const New = ({ getPosts }) => {
           onChange={(e) => setTitle(e.target.value)}
         />
         <br />
-        <label htmlFor="content">Content: </label>
+        <label htmlFor="content">Content: </label><br />
         <textarea
           name="content"
           id="content"
+          cols="30"
+          rows="5"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />

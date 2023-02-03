@@ -32,7 +32,9 @@ const Card = ({ data, comments, setData, getPosts, getComments }) => {
           modal.style.display = "block";
         }}
       >
-        <h3>{data.title}</h3>
+        <p className="heading">
+          <strong>{data.title}</strong>
+        </p>
         <p>{data.text}</p>
         <p>
           {comments.length} {comments.length != 1 ? "Comments" : "Comment"}

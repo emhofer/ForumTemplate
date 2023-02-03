@@ -14,6 +14,8 @@ const Modal = ({
     comments = comments.filter((item) => item.post == data._id);
   }
 
+  
+
   const [comment, setComment] = useState("");
 
   const handleSubmit = async (e) => {
@@ -54,24 +56,27 @@ const Modal = ({
         Close
       </button>
       <h3>{data.title}</h3>
-      <p>{data.content}</p>
+      <p className="multiLine">{data.content}</p>
+      <h3>Comments</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor="comment">Add comment: </label>
-        <input
-          type="text"
+        <br />
+        <textarea
           name="comment"
           id="comment"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-        />
+        /> <br />
         <input type="submit" value="Submit" />
       </form>
       {comments.length > 0 ? (
         comments.sort(compare).map((item) => (
-          <div>
-            <p key={item._id}>
+          <div key={item._id}>
+            <p className="multiLine">
+              <button className="" onClick={() => deleteComment(item._id)}>
+                Delete
+              </button>{" "}
               {item.content}
-              <button onClick={() => deleteComment(item._id)}>Delete</button>
             </p>
           </div>
         ))
