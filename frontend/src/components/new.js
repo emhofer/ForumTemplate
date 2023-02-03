@@ -7,7 +7,7 @@ const New = ({ getPosts }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = { title, content, points: 0, timestamp: new Date() };
+    const payload = { title, content, timestamp: new Date() };
     const response = await axios.post(
       `https://eu-central-1.aws.data.mongodb-api.com/app/forumtemplate-bkubi/endpoint/posts/add`,
       payload
@@ -32,8 +32,7 @@ const New = ({ getPosts }) => {
         />
         <br />
         <label htmlFor="content">Content: </label>
-        <input
-          type="text"
+        <textarea
           name="content"
           id="content"
           value={content}

@@ -10,7 +10,6 @@ function App() {
   const [data, setData] = useState({});
   const [APIposts, setAPIposts] = useState([]);
   const [APIcomments, setAPIcomments] = useState([]);
-  let sortedAPIposts = [];
 
   const getPosts = async () => {
     const response = await axios.get(
@@ -55,6 +54,8 @@ function App() {
             data={item}
             comments={APIcomments}
             setData={setData}
+            getPosts={getPosts}
+            getComments={getComments}
           />
         );
       })}
